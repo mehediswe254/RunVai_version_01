@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="description" content="Play RunVai 2D, a neon runner game with coins, double jump, and mobile touch controls.">
+  <meta name="theme-color" content="#090b20">
+  <title>RunVai 2D - Neon Adventure</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand"><span class="brand-icon">◆</span><div><b>RunVai</b><small>NEON ADVENTURE</small></div></div>
+      <div class="top-stats"><span>🪙 <b id="wallet">0</b></span><span>🏆 <b id="best">0</b></span></div>
+      <button class="icon-btn" id="soundBtn" aria-label="Toggle sound">♫</button>
+    </header>
+
+    <section class="game-shell">
+      <div class="hud">
+        <span>SCORE <b id="score">0</b></span>
+        <span>COINS <b id="runCoins">0</b></span>
+        <button id="fullscreenBtn" class="pause-btn fullscreen-btn" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button>
+        <button id="pauseBtn" class="pause-btn" aria-label="Pause">Ⅱ</button>
+      </div>
+      <canvas id="game" width="960" height="540" aria-label="RunVai game"></canvas>
+
+      <section class="screen active" id="menuScreen">
+        <div class="menu-card">
+          <div class="hero">⚡</div>
+          <p class="eyebrow">RUN • JUMP • COLLECT</p>
+          <h1>COIN <span>RUSH</span></h1>
+          <p class="subtitle">Run through the neon city. Collect coins. Beat your best score.</p>
+          <button class="primary" id="startBtn">▶ START GAME</button>
+          <div class="menu-actions">
+            <button class="secondary" id="shopBtn">♟ CHARACTER SHOP</button>
+            <button class="secondary" id="missionsBtn">◎ MISSIONS</button>
+            <button class="secondary" id="highScoreBtn">🏆 HIGH SCORES</button>
+          </div>
+          <p class="small-line">BEST SCORE: <b id="menuBest">0</b></p>
+          <label class="auto-mission-toggle"><input type="checkbox" id="autoMissionToggle" checked> <span>⚡ AUTO MISSION</span><small>Automatically complete missions and collect rewards</small></label>
+        </div>
+      </section>
+
+      <section class="screen" id="pauseScreen">
+        <div class="dialog"><p class="eyebrow">TAKE A BREATH</p><h2>PAUSED</h2>
+          <button class="primary" id="resumeBtn">▶ RESUME</button>
+          <button class="secondary wide" id="pauseHomeBtn">⌂ MAIN MENU</button>
+        </div>
+      </section>
+
+      <section class="screen" id="overScreen">
+        <div class="dialog"><p class="eyebrow">RUN COMPLETE</p><h2>GAME OVER</h2>
+          <div class="result"><div><small>SCORE</small><b id="finalScore">0</b></div><div><small>COINS</small><b id="finalCoins">0</b></div></div>
+          <button class="primary" id="againBtn">↻ PLAY AGAIN</button>
+          <button class="secondary wide" id="overHomeBtn">⌂ MAIN MENU</button>
+        </div>
+      </section>
+
+      <section class="screen" id="shopScreen">
+        <div class="panel">
+          <div class="panel-head"><div><p class="eyebrow">UNLOCK YOUR HERO</p><h2>CHARACTER SHOP</h2></div><button class="close-btn" data-home>✕</button></div>
+          <div class="shop-grid" id="shopGrid"></div>
+          <p class="hint">Select an unlocked character or spend coins to unlock another.</p>
+          <button class="secondary wide" data-home>← BACK</button>
+        </div>
+      </section>
+
+      <section class="screen" id="highScoreScreen">
+        <div class="panel high-score-panel">
+          <div class="panel-head"><div><p class="eyebrow">YOUR RECORDS</p><h2>HIGH SCORES</h2></div><button class="close-btn" data-home>✕</button></div>
+          <div class="record-card"><span>🏆</span><small>PERSONAL BEST</small><strong id="recordBest">0</strong></div>
+          <div class="record-card"><span>🎮</span><small>LAST RUN</small><strong id="recordLast">0</strong></div>
+          <p class="hint">Your scores are saved on this browser and device.</p>
+          <button class="secondary wide" data-home>← BACK</button>
+        </div>
+      </section>
+
+      <section class="screen" id="missionsScreen">
+        <div class="panel">
+          <div class="panel-head"><div><p class="eyebrow">PLAY AND EARN</p><h2>MISSIONS</h2></div><button class="close-btn" data-home>✕</button></div>
+          <div class="mission"><span>🪙</span><div><b>Collect 20 Coins</b><small id="mCoins">0 / 20</small><div class="bar"><i id="barCoins"></i></div></div><strong>+50</strong></div>
+          <div class="mission"><span>⚡</span><div><b>Pass 10 Obstacles</b><small id="mObstacles">0 / 10</small><div class="bar"><i id="barObstacles"></i></div></div><strong>+100</strong></div>
+          <div class="mission"><span>🏆</span><div><b>Reach 500 Score</b><small id="mScore">0 / 500</small><div class="bar"><i id="barScore"></i></div></div><strong>+150</strong></div>
+          <p class="hint">Mission progress is tracked during each run. Rewards are added when a mission is completed.</p>
+          <button class="secondary wide" data-home>← BACK</button>
+        </div>
+      </section>
+
+      <div class="touch-controls">
+        <button id="jumpBtn">⬆ <span>JUMP</span></button>
+        <button id="slideBtn">⬇ <span>SLIDE</span></button>
+      </div>
+    </section>
+    <footer>RunVai 2D <span>•</span> NEON CITY EDITION</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
